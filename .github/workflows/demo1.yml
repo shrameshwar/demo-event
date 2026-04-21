@@ -4,6 +4,13 @@ on:
     types:
       - opened
   workflow_dispatch:
+  push:
+    branches:
+      - main #main
+      - 'dev-*' # dev-new dev-this
+      - 'dev/**' #dev/new  dev/new/button  it will trigger when on these branches will be pushed
+    paths-ignore:
+      - '.github/workflows/*' # event will not trigger on push of above braches as well if change will be only on workflow file.
 jobs:
   deploy:
     runs-on: ubuntu-latest
